@@ -1,0 +1,10 @@
+<app-header></app-header>
+
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+
+  <!-- Only show sign-in component if the user is not authenticated -->
+  <app-sign-in *ngIf="!isAuthenticated"></app-sign-in>
+</div>
+
+<app-footer></app-footer>

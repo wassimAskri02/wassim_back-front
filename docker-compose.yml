@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  backend:
+    build: ./Blogger-Backend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    # If you need to connect to a database, you might add environment variables here
+    # For example, for a MongoDB connection:
+    # - DB_HOST=mongodb
+    # - DB_PORT=27017
+    # - DB_USER=user
+    # - DB_PASSWORD=password
+    # Restart policy
+    restart: unless-stopped
+    # To keep logs clean and manageable
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  frontend:
+    build: ./Blogger
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    # For a static site, Nginx will serve the content
+    # If the frontend needs to communicate with the backend, 
+    # use environment variables or a config file to set the backend URL
+    # environment:
+    #   - API_URL=http://backend:3000
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+

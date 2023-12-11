@@ -1,0 +1,16 @@
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+}
+
+body {
+  background-color: #f8f9fa;
+}
+
+.navbar-dark .navbar-brand, .navbar-dark .nav-link {
+  color: var(--primary-color);
+}
+
+.card {
+  border: 1px solid var(--secondary-color);
+}
